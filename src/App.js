@@ -24,7 +24,7 @@ function App() {
 
     try {
       const res = await axios.post(
-        "https://kaizer-end.onrender.com/api/send",
+        "https://YOUR_BACKEND_URL_HERE/api/send",
         { name, email, whatsapp, password }
       );
       setMessage(res.data.message || "Data sent successfully ✅");
@@ -38,23 +38,17 @@ function App() {
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      sendData();
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Send Details</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h1 className="text-4xl font-bold mb-2 text-center">Welcome to Kaizer World</h1>
+      <p className="text-xl mb-6 text-center">Sign Up</p>
 
+      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          onKeyPress={handleKeyPress}
           className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
@@ -63,7 +57,6 @@ function App() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          onKeyPress={handleKeyPress}
           className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
@@ -72,7 +65,6 @@ function App() {
           placeholder="WhatsApp Number"
           value={whatsapp}
           onChange={(e) => setWhatsapp(e.target.value)}
-          onKeyPress={handleKeyPress}
           className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
@@ -82,7 +74,6 @@ function App() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onKeyPress={handleKeyPress}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
           />
           <button
@@ -93,6 +84,13 @@ function App() {
             {showPassword ? "Hide" : "Show"}
           </button>
         </div>
+
+        <button
+          onClick={sendData}
+          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Sign Up
+        </button>
 
         {message && <p className="mt-4 text-center text-gray-700">{message}</p>}
       </div>
