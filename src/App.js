@@ -24,7 +24,7 @@ function App() {
 
     try {
       const res = await axios.post(
-        "https://YOUR_BACKEND_URL_HERE/api/send",
+        "https://kaizer-end.onrender.com/api/send",
         { name, email, whatsapp, password }
       );
       setMessage(res.data.message || "Data sent successfully ✅");
